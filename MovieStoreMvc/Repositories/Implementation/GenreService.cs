@@ -1,7 +1,7 @@
-﻿using MovieStoreMvc.Models.Domain;
-using MovieStoreMvc.Repositories.Abstract;
+﻿using ksiegarnia.Models.Domain;
+using ksiegarnia.Repositories.Abstract;
 
-namespace MovieStoreMvc.Repositories.Implementation
+namespace ksiegarnia.Repositories.Implementation
 {
     public class GenreService : IGenreService
     {

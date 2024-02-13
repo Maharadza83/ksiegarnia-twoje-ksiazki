@@ -1,6 +1,6 @@
-﻿using MovieStoreMvc.Models.DTO;
+﻿using ksiegarnia.Models.DTO;
 
-namespace MovieStoreMvc.Repositories.Abstract
+namespace ksiegarnia.Repositories.Abstract
 {
     public interface IUserAuthenticationService
     {

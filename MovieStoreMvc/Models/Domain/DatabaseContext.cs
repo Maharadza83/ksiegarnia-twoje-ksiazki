@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace MovieStoreMvc.Models.Domain
+namespace ksiegarnia.Models.Domain
 {
     public class DatabaseContext : IdentityDbContext<ApplicationUser>
     {

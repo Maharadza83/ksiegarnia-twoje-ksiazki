@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MovieStoreMvc.Models.Domain
+namespace ksiegarnia.Models.Domain
 {
     public class Movie
     {

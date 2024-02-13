@@ -1,8 +1,8 @@
-﻿using MovieStoreMvc.Models.Domain;
-using MovieStoreMvc.Models.DTO;
-using MovieStoreMvc.Repositories.Abstract;
+﻿using ksiegarnia.Models.Domain;
+using ksiegarnia.Models.DTO;
+using ksiegarnia.Repositories.Abstract;
 
-namespace MovieStoreMvc.Repositories.Implementation
+namespace ksiegarnia.Repositories.Implementation
 {
     public class MovieService : IMovieService
     {

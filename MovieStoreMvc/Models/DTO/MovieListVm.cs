@@ -1,6 +1,6 @@
-﻿using MovieStoreMvc.Models.Domain;
+﻿using ksiegarnia.Models.Domain;
 
-namespace MovieStoreMvc.Models.DTO
+namespace ksiegarnia.Models.DTO
 {
     public class MovieListVm
     {

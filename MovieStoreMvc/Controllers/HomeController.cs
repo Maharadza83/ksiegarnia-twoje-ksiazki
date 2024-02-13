@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MovieStoreMvc.Repositories.Abstract;
+using ksiegarnia.Repositories.Abstract;
 
-namespace MovieStoreMvc.Controllers
+namespace ksiegarnia.Controllers
 {
     public class HomeController : Controller
     {

@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MovieStoreMvc.Models.Domain;
+using ksiegarnia.Models.Domain;
 
 #nullable disable
 
-namespace MovieStoreMvc.Migrations
+namespace ksiegarnia.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
     partial class DatabaseContextModelSnapshot : ModelSnapshot
@@ -17,10 +17,10 @@ namespace MovieStoreMvc.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.10")
+                .HasAnnotation("ProductVersion", "8.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -55,7 +55,7 @@ namespace MovieStoreMvc.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -80,7 +80,7 @@ namespace MovieStoreMvc.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
                         .HasColumnType("nvarchar(max)");
@@ -155,7 +155,7 @@ namespace MovieStoreMvc.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("MovieStoreMvc.Models.Domain.ApplicationUser", b =>
+            modelBuilder.Entity("ksiegarnia.Models.Domain.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -224,13 +224,13 @@ namespace MovieStoreMvc.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("MovieStoreMvc.Models.Domain.Genre", b =>
+            modelBuilder.Entity("ksiegarnia.Models.Domain.Genre", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("GenreName")
                         .IsRequired()
@@ -241,13 +241,13 @@ namespace MovieStoreMvc.Migrations
                     b.ToTable("Genre");
                 });
 
-            modelBuilder.Entity("MovieStoreMvc.Models.Domain.Movie", b =>
+            modelBuilder.Entity("ksiegarnia.Models.Domain.Movie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Cast")
                         .IsRequired()
@@ -272,13 +272,13 @@ namespace MovieStoreMvc.Migrations
                     b.ToTable("Movie");
                 });
 
-            modelBuilder.Entity("MovieStoreMvc.Models.Domain.MovieGenre", b =>
+            modelBuilder.Entity("ksiegarnia.Models.Domain.MovieGenre", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("GenreId")
                         .HasColumnType("int");
@@ -302,7 +302,7 @@ namespace MovieStoreMvc.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("MovieStoreMvc.Models.Domain.ApplicationUser", null)
+                    b.HasOne("ksiegarnia.Models.Domain.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -311,7 +311,7 @@ namespace MovieStoreMvc.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("MovieStoreMvc.Models.Domain.ApplicationUser", null)
+                    b.HasOne("ksiegarnia.Models.Domain.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -326,7 +326,7 @@ namespace MovieStoreMvc.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MovieStoreMvc.Models.Domain.ApplicationUser", null)
+                    b.HasOne("ksiegarnia.Models.Domain.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -335,7 +335,7 @@ namespace MovieStoreMvc.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("MovieStoreMvc.Models.Domain.ApplicationUser", null)
+                    b.HasOne("ksiegarnia.Models.Domain.ApplicationUser", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

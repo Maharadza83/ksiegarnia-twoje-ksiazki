@@ -1,6 +1,6 @@
-﻿using MovieStoreMvc.Repositories.Abstract;
+﻿using ksiegarnia.Repositories.Abstract;
 
-namespace MovieStoreMvc.Repositories.Implementation
+namespace ksiegarnia.Repositories.Implementation
 {
     public class FileService : IFileService
     {

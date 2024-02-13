@@ -1,4 +1,4 @@
-﻿namespace MovieStoreMvc.Repositories.Abstract
+﻿namespace ksiegarnia.Repositories.Abstract
 {
     public interface IFileService
     {

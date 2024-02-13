@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MovieStoreMvc.Models.Domain;
-using MovieStoreMvc.Repositories.Abstract;
+using ksiegarnia.Models.Domain;
+using ksiegarnia.Repositories.Abstract;
 
-namespace MovieStoreMvc.Controllers
+namespace ksiegarnia.Controllers
 {
     [Authorize]
     public class GenreController : Controller

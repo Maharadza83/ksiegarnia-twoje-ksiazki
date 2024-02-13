@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace MovieStoreMvc.Models.DTO
+namespace ksiegarnia.Models.DTO
 {
     public class LoginModel
     {

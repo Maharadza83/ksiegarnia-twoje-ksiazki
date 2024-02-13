@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using MovieStoreMvc.Models.Domain;
-using MovieStoreMvc.Repositories.Abstract;
+using ksiegarnia.Models.Domain;
+using ksiegarnia.Repositories.Abstract;
 
-namespace MovieStoreMvc.Controllers
+namespace ksiegarnia.Controllers
 {
     [Authorize]
     public class MovieController : Controller

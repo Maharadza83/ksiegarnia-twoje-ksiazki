@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using MovieStoreMvc.Models.Domain;
-using MovieStoreMvc.Repositories.Abstract;
-using MovieStoreMvc.Repositories.Implementation;
+using ksiegarnia.Models.Domain;
+using ksiegarnia.Repositories.Abstract;
+using ksiegarnia.Repositories.Implementation;
 
 var builder = WebApplication.CreateBuilder(args);
 

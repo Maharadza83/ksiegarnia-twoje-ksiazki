@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MovieStoreMvc.Migrations
+namespace ksiegarnia.Migrations
 {
+    /// <inheritdoc />
     public partial class init : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -239,6 +241,7 @@ namespace MovieStoreMvc.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
