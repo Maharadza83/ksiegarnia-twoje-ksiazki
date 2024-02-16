@@ -1,40 +1,42 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using ksiegarnia.Models.DTO;
 using ksiegarnia.Repositories.Abstract;
+using ksiegarnia.Models.Domain;
 
 namespace ksiegarnia.Controllers
 {
     public class UserAuthenticationController : Controller
     {
         private IUserAuthenticationService authService;
-        public UserAuthenticationController(IUserAuthenticationService authService)
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public UserAuthenticationController(IUserAuthenticationService authService, SignInManager<ApplicationUser> signInManager)
         {
             this.authService = authService;
-        }
-        /* We will create a user with admin rights, after that we are going
-          to comment this method because we need only
-          one user in this application 
-          If you need other users ,you can implement this registration method with view
-          I have create a complete tutorial for this, you can check the link in description box
-         */
-
-        public async Task<IActionResult> Register()
-        {
-           var model = new RegistrationModel
-            {
-               Email = "admin@gmail.com",
-               Username = "admin",
-               Name = "Ravindra",
-               Password = "Admin@123",
-               PasswordConfirm = "Admin@123",
-               Role = "User"
-           };
-        //    // if you want to register with user , Change Role="User"
-            var result = await authService.RegisterAsync(model);
-            return Ok(result.Message);
+            _signInManager = signInManager;
         }
 
-        public async Task<IActionResult> Login()
+        /* Metoda Register() została zakomentowana, ponieważ nie jest potrzebna 
+           w kontekście logowania za pomocą Google. Możesz ją pominąć. */
+
+        // public async Task<IActionResult> Register()
+        // {
+        //     var model = new RegistrationModel
+        //     {
+        //         Email = "admin@gmail.com",
+        //         Username = "admin",
+        //         Name = "Ravindra",
+        //         Password = "Admin@123",
+        //         PasswordConfirm = "Admin@123",
+        //         Role = "User"
+        //     };
+        //     var result = await authService.RegisterAsync(model);
+        //     return Ok(result.Message);
+        // }
+
+        public IActionResult Login()
         {
             return View();
         }
@@ -57,9 +59,47 @@ namespace ksiegarnia.Controllers
 
         public async Task<IActionResult> Logout()
         {
-           await authService.LogoutAsync();
+            await authService.LogoutAsync();
             return RedirectToAction(nameof(Login));
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ExternalLogin(string provider, string returnUrl = null)
+        {
+            // Zwróć wyzwanie uwierzytelniające na zewnątrz do dostawcy
+            var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "UserAuthentication", new { returnUrl });
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(provider, redirectUrl);
+            return Challenge(properties, provider);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)
+        {
+            if (remoteError != null)
+            {
+                TempData["ErrorMessage"] = $"Error from external provider: {remoteError}";
+                return RedirectToAction(nameof(Login));
+            }
+
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+            if (info == null)
+            {
+                TempData["ErrorMessage"] = "Error loading external login information.";
+                return RedirectToAction(nameof(Login));
+            }
+
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = "External login failed.";
+                return RedirectToAction(nameof(Login));
+            }
+        }
     }
 }

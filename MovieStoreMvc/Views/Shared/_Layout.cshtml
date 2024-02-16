@@ -16,6 +16,94 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="/images/movie_filter_FILL0_wght400_GRAD0_opsz48.svg">
     <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .nav-bar {
+            background-color: #333;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            color: #000; /* Zmiana koloru napisu "Twoje Książki" na czarny */
+        }
+
+        .nav-link {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+        }
+
+            .nav-link li {
+                position: relative;
+            }
+
+            .nav-link a {
+                color: #fff;
+                text-decoration: none;
+                padding: 0.5rem 1rem;
+                transition: color 0.3s;
+            }
+
+                .nav-link a:hover {
+                    color: #ccc;
+                }
+
+        .dropdown-nav-link {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #333;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .nav-link li:hover .dropdown-nav-link {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .dropdown-nav-link li {
+            display: block;
+        }
+
+        .dropdown-nav-link a {
+            padding: 0.5rem 1rem;
+            color: #fff;
+        }
+
+            .dropdown-nav-link a:hover {
+                background-color: #555;
+            }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <nav class="nav-bar">
@@ -37,14 +125,15 @@
                     </ul>
                 </li>
             }
-           
-            @if(string.IsNullOrEmpty(username)){
+
+            @if (string.IsNullOrEmpty(username))
+            {
                 <li><a href="/UserAuthentication/Login">Login</a></li>
             }
         </ul>
     </nav>
     <div class="container">
-       @RenderBody()
+        @RenderBody()
     </div>
     <footer>
         &#169; @DateTime.UtcNow.Year księgarnia z.o.o
